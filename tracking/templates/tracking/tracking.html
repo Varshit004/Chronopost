@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chronopost Tracking</title>
+    <script>
+        function redirectToChronopost(event) {
+            event.preventDefault();  // Prevent form from submitting normally
+            let trackingNumber = document.getElementById("tracking_number").value;
+            if (trackingNumber) {
+                let url = "https://www.chronopost.fr/tracking-no-cms/suivi-page?listeNumerosLT=" + encodeURIComponent(trackingNumber);
+                window.location.href = url;  // Redirect to Chronopost tracking page
+            } else {
+                alert("Please enter a tracking number.");
+            }
+        }
+    </script>
+</head>
+<body>
+    <h2>Track Your Chronopost Shipment</h2>
+    <p style="color: red;">If you see this, the template is loading correctly.</p>
+
+    <form onsubmit="redirectToChronopost(event)">
+        <label for="tracking_numbeer">Enter Tracking Number:</label>
+        <input type="text" id="tracking_number" name="tracking_number" required>
+        <button type="submit">Track</button>
+    </form>
+</body>
+</html>
